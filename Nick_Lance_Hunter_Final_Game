@@ -1,0 +1,334 @@
+import random
+
+def rec_room():
+    print("Welcome to the recreation room,\nhere you will play a game of darts where you will have to guess a \nnumber and the closer to the actual number you get, the more \npoints that come with it. After beating a bot score in darts, you \nwill go to the weapon wheel where it will randomly select a \nweapon for you to use at the gun range. Each gun has a different \namount of shots and the more shots it has the lower the chance of \nyou actually hitting the shot. You will have to successfully hit \nthree out of the five targets at the range in order to unlock the \ngreen glass door where you will have to answer a riddle in order \nto open the door and get into the next room.")
+    print("\n")
+    ask = raw_input("Do you want to go back out into the hallway or jump on to the S.S. \nAdventure with our room?: ")
+    
+    if ask == "Yes":
+        print("Welcome to adventure, mystery, and fun in the rec room!")
+        movement()
+    elif ask == "No":
+        print("Going back into the hallway...")
+        commons()
+
+def movement():
+    locations = ("\n" + "The Tv," + "\n" + "The Entrance," + "\n" + "The Weapon Wheel," + "\n" + "The Shooting Range," + "\n" + "The Green Glass Door" + "\n" + "and The Dart Game")
+    locationGuess = ("Tv" + "Entrance" + "Weapon Wheel" + "Green Glass Door" + "Dart Board")
+    
+    print("The room is barren except for these locals, " + str(locations) + ".")
+    print("\n")
+    move = input('Where do you want to go?: ')
+    
+    '''
+    while move not in locationShort:
+        print("Pick from the locations given, unless if you want to look at paint dry.")
+        print("\n")
+        move = input('Where do you want to go?: ')
+    '''
+    if move == "Tv":
+        print("Going over to the TV...")
+        tv()
+    elif move == "Entrance":
+        print("Going back to the entrance...")
+        rec_room()
+    elif move == "Weapon Wheel":
+        print("Going over to the shooting range...")
+        shooting_range_call()
+    elif move == "Green Glass Door":
+        print("Going over to the green glass door...")
+        GGD()
+    elif move == "Dart Board":
+        print("Going over to the dart board...")
+        dart_board()
+    else:
+        print("Pick from the locations given, unless \nif you want to look at paint dry.")
+        print("\n")
+        movement()
+def tv():
+  channelList = ("The Daily Inspirer on channel 1" + "\n" + "The Guns and Freedom Special on channel 2" + "\n" + "Bar Stool Sports on channel 3" + "\n" + "and US TRUST WORTHY NEWS on channel 4")
+  channels = [1,2,3,4]
+  print("You look at the tv guide and it has... " + "\n" + str(channelList))
+  channelChoice = int(input("What channel number do you want to watch? "))
+
+  while channelChoice not in channels:
+      print("Only thing you see is staic,  pick the available channels")
+      print("\n")
+      channelChoice = int(input("What channel number do you want to watch? "))
+  if channelChoice == channels[0]:
+      print("Don't take life too seriously, you'll never get out of it alive - Nick French 2017")
+      movement()
+  elif channelChoice == channels[1]:
+      print("The shotgun has a 1 in 5 to hit, so reset the program until you get it from the weapon wheel.")
+      movement()
+  elif channelChoice == channels[2]:
+      print("Try to guess as much as possible, and if you get a score of 12 and above for one of the guesses, guess the same number and you're guaranteed to win. ")
+      movement()
+  elif channelChoice == channels[3]:
+      print("AS RACIST AMERICA'S LEADER DECLEARS NUCLEAR WAR ON KORTH NOREA, PREPARE FOR LOVING KINDNESS FROM OUR SUPREME OVERLORDS. TRUST US, WE'RE THE MEDIA, WE'RE THE TRUTH.")
+      movement()
+      
+def dart_board():
+    chance = random.randint(0, 100)
+    range5 = range((chance - 5), (chance + 6))
+    range10 = range((chance - 10), (chance + 11))
+    range15 = range((chance - 15), (chance + 16))
+    range20 = range((chance - 20), (chance + 21))
+    range25 = range((chance - 25), (chance + 26))
+    range30 = range((chance - 30), (chance + 31))
+    score = []
+    inventory = []
+    i = 0
+
+    dartArt = """\
+        ,-'''''-,    ,-----.
+      ,' \ _|_ / `.  | NLH |
+     /`.,'\ | /`.,'\ `-----'  |
+    (  /`. \|/ ,'\  )      |  H
+    |--|--;=@=:--|--|   |  H  U
+    (  \,' /|\ `./  )   H  U  |
+     \,'`./ | \,'`./    U  | (|)
+      `. / ''' \ ,'     | (|)
+        '-._|_,-`      (|)
+    """
+    print(dartArt)
+    chance = random.randint(0, 100)
+    print(chance)
+    print(range5)
+    print(range10)
+    print(range15)
+    print(range20)
+    print(range25)
+    print(range30)
+
+    for i in range(3):
+        user = input("On a scale of 0 - 100, how hard do you want to throw the dart?: ")
+        user = int(user)
+        if user == chance:
+            print("\n")
+            print("CONGRATULATIONS!!! Today's your lucky day, because you automatically get access to the weapon wheel and now you get an extra shot at the shooting range.")
+            print("\n")
+            print("You got the WWKey in your inventory")
+            inventory.append("WWkey")
+            break
+            movement()
+        elif user in range5:
+            score.append(18)
+            print("You guessed " + str(user))
+            print("You scored 18 points")
+            print("\n")
+        elif user in range10:
+            score.append(14)
+            print("You guessed " + str(user))
+            print("You scored 14 points")
+            print("\n")
+        elif user in range15:
+            score.append(12)
+            print("You guessed " + str(user))
+            print("You scored 12 points")
+            print("\n")
+        elif user in range20:
+            score.append(8)
+            print("You guessed " + str(user))
+            print("You scored 8 points")
+            print("\n")
+        elif user in range25:
+            score.append(6)
+            print("You guessed " + str(user))
+            print("You scored 6 points")
+            print("\n")
+        elif user in range30:
+            score.append(4)
+            print("You guessed " + str(user))
+            print("You scored 4 points")
+            print("\n")
+        else:
+            print("YOU MISSED? HAHAHA NEEEEEERD, Try again and to score more than 0.")
+            score.append(0)
+            print("You guessed " + str(user))
+            print("\n")
+        
+    sum = score[0] + score[1] + score[2]
+    print("Final score: " + str(sum))
+
+    if sum >= 32:
+        print("\n")
+        print("You got above the required score for the accuracy, move on to the shooting range, the weapon wheel is now accessible.")
+        print("\n")
+        print("You got the WWKey in your inventory")
+        inventory.append["WWkey"]
+    else:
+        print("\n")
+        print("Try again, the weapon wheel is still locked.")
+'''
+this code is going to be something along the lines of what the shooting range is suppossed to do
+the point of what this is suppossed to do is have the randomizers for the gun accuracy
+and for it to have the user input for the gun accuracy.
+there will be 5 different guns (kolibri, throwing knife, colt 1911, remington 11-87, and bow & arrow) 
+and all of them will have a different accuracy which will be decided by the random numberoptions each gun has 
+the larger the range of the number that has to be guessed the less accurate, and with each gun you only have 2 chances. 
+in the end you need 3 targets hit in order to get the key which starts up the next code. 
+'''
+import random
+
+def shooting_range_call():
+    kolibri = random.randint(1,50)
+    throwknife = random.randint(1,25)
+    bow_arrow = random.randint(1,15)
+    colt = random.randint(1,10)
+    remington = random.randint(1,5)
+    wheel_choices = ("kolibri", "throwing knife", "bow & arrow", "bow & arrow", "bow & arrow", "colt 1911", "colt 1911", "colt 1911", "remington 11-87")
+    wheel_chance = random.choice(wheel_choices)
+    #try to make it an array
+
+    def kolibri_random():
+        for i in range(6):
+            kolibri()
+    def knife_random():
+        for i in range(5):
+            throwknife()
+    def bow_random():
+        for i in range(3):
+            bow_arrow()
+    def colt_random():
+        for i in range(2):
+            colt()
+    def shotty_random():
+        remington()
+
+    if wheel_chance == "kolibri":
+        print "You have 6 shots in this magazine, better hope you're \nlucky cuz you have a 1 in 50 chance to hit!"
+        shot_one_kolibri = int(input("Guess a number between 1 and 50 for your first shot: "))
+        shot_two_kolibri = int(input("Guess a number between 1 and 50 for your second shot: "))
+        shot_three_kolibri = int(input("Guess a number between 1 and 50 for your third shot: "))
+        shot_four_kolibri = int(input("Guess a number between 1 and 50 for your fourth shot: "))
+        shot_five_kolibri = int(input("Guess a number between 1 and 50 for your fifth shot: "))
+        shot_six_kolibri = int(input("Guess a number between 1 and 50 for your sixth shot: "))
+        if shot_one_kolibri or shot_two_kolibri or shot_three_kolibri or shot_four_kolibri or shot_five_kolibri or shot_six_kolibri > 50:
+            print "Pick lower please, one of your numbers was higher than 50 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call() 
+        elif shot_one_kolibri or shot_two_kolibri or shot_three_kolibri or shot_four_kolibri or shot_five_kolibri or shot_six_kolibri < 1:
+            print "Pick higher please, one of your numbers was lower than 1 \nand was out of the range."
+            shooting_range_call()
+        elif kolibri_random == shot_one_kolibri or shot_two_kolibri or shot_three_kolibri or shot_four_kolibri or shot_five_kolibri or shot_six_kolibri:
+            print "happy"
+        else:
+            print "sad"
+  
+  
+    if wheel_chance == "throwing knife":
+        print "You have 5 knives to throw, better hope you're \nlucky cuz you have a 1 in 25 chance to hit!"
+        shot_one_knife = int(input("Guess a number between 1 and 25 for your first shot: "))
+        shot_two_knife = int(input("Guess a number between 1 and 25 for your second shot: "))
+        shot_three_knife = int(input("Guess a number between 1 and 25 for your third shot: "))
+        shot_four_knife = int(input("Guess a number between 1 and 25 for your fourth shot: "))
+        shot_five_knife = int(input("Guess a number between 1 and 25 for your fifth shot: "))
+        
+        if shot_one_knife or shot_two_knife or shot_three_knife or shot_four_knife or shot_five_knife > 50:
+            print "Pick lower please, one of your numbers was higher than 50 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call()
+        elif shot_one_knife or shot_two_knife or shot_three_knife or shot_four_knife or shot_five_knife < 1:
+            print "Pick higher please, one of your numbers was lower than 1 \nand was out of the range."
+            shooting_range_call()
+        elif knife_random == shot_one_knife or shot_two_knife or shot_three_knife or shot_four_knife or shot_five_knife:
+            print "happ"
+        else:
+            print "sa"
+  
+    if wheel_chance == "bow & arrow":
+        print "You have three shots in your quiver, better hope you're \nlucky cuz you have a 1 in 15 chance to hit!"
+        shot_one_bow = int(input("Guess a number between 1 and 15 for your first shot: "))
+        shot_two_bow = int(input("Guess a number between 1 and 15 for your second shot: "))
+        shot_three_bow = int(input("Guess a number between 1 and 15 for your third shot: "))
+        if shot_one_bow or shot_two_bow or shot_three_bow > 50:
+            print "Pick lower please, one of your numbers was higher than 50 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call()
+        elif shot_one_bow or shot_two_bow or shot_three_bow < 0:
+            print "Pick higher please, one of your numbers was lower than 0 \nand was out of the range."
+            shooting_range_call()
+        if bow_random == shot_one_bow or shot_two_bow or shot_three_bow:
+            print "hap"
+        else:
+            print "s"
+
+
+    if wheel_chance == "colt 1911":
+        print "You have 2 shots in this magazine, better hope you're \nlucky cuz you have a 1 in 10 chance to hit!"
+        shot_one_colt = int(input("Guess a number between 1 and 10 for your first shot: "))
+        shot_two_colt = int(input("Guess a number between 1 and 10 for your second shot: "))
+        if shot_one_colt or shot_two_colt > 50:
+            print "Pick lower please, one of your numbers was higher than 50 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call()
+        elif shot_one_colt or shot_two_colt < 0:
+            print "Pick higher please, one of your numbers was lower than 0 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call()
+        if colt_random == shot_one_colt or shot_two_colt:
+            print "happy"
+        else:
+            print "sad"
+
+
+    if wheel_chance == "remington 11-87":
+        print "You have 1 shots in this big boy, better hope you're \nlucky cuz you have a 1 in 5 chance to hit!"
+        shot_one_shotty = int(input("Guess a number between 1 and 5 for your only shot: "))
+        if shot_one_shotty > 501:
+            print "Pick lower please, one of your numbers was higher than 50 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call() 
+        elif shot_one_shotty < 0:
+            print "Pick higher please, one of your numbers was lower than 0 \nand was out of the range."
+            print "----------------------------------------------------------------"
+            shooting_range_call()
+        if shotty_random == shot_one_shotty:  
+            print "happy"
+        else:
+            print "sad"
+
+def GGD():
+
+  person = input('There is a green glass door in the middle of Minnesota.\n Only certain things can go through the door.\n What can go through? ')
+ 
+  #correct_letters = [bb, cc, dd, ee, ff, gg, kk, ll, mm, nn, oo, pp, rr, ss, tt, vv, zz]
+ 
+  if 'bb' in person:
+      print "Correct."
+  elif 'cc' in person:
+      print "Correct."
+  elif 'dd' in person:
+      print "Correct."
+  elif 'ee' in person:
+      print "Correct."
+  elif 'ff' in person:
+      print "Correct."
+  elif 'gg' in person:
+      print "Correct."
+  elif 'kk' in person:
+      print "Correct."
+  elif 'll' in person:
+      print "Correct."
+  elif 'mm' in person:
+      print "Correct."
+  elif 'nn' in person:
+      print "Correct."
+  elif 'oo' in person:
+      print "Correct."
+  elif 'pp' in person:
+      print "Correct."
+  elif 'rr' in person:
+      print "Correct."
+  elif 'ss' in person:
+      print "Correct."
+  elif 'tt' in person:
+      print "Correct."
+  elif 'vv' in person:
+      print "Correct."
+  elif 'zz' in person:
+      print "Correct."
+  else:
+      print "Incorrect."
+ 
